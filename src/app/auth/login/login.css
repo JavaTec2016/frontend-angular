@@ -1,0 +1,458 @@
+/* ─── Global resets (scoped) ─── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap');
+
+:host {
+  display: block;
+  height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ─── Layout ─── */
+.auth-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  background: #0a0a0f;
+}
+
+/* ─── Art Panel ─── */
+.art-panel {
+  position: relative;
+  background: #0f0e1a;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.art-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 60%, rgba(138, 92, 246, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 70% 30%, rgba(56, 189, 248, 0.10) 0%, transparent 70%);
+}
+
+.panel-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 3rem;
+}
+
+.monogram {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+}
+
+blockquote {
+  margin: 0;
+  border-left: none;
+}
+
+blockquote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.65rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+}
+
+blockquote cite {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+.dots-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+}
+
+.dot.active {
+  background: rgba(255,255,255,0.7);
+}
+
+.corner-ornament {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+}
+
+.corner-ornament::before,
+.corner-ornament::after {
+  content: '';
+  position: absolute;
+  background: rgba(255,255,255,0.12);
+}
+
+.top-right {
+  top: 2rem;
+  right: 2rem;
+}
+.top-right::before { width: 1px; height: 80px; right: 0; top: 0; }
+.top-right::after  { width: 80px; height: 1px; right: 0; top: 0; }
+
+.bottom-left {
+  bottom: 2rem;
+  left: 2rem;
+}
+.bottom-left::before { width: 1px; height: 80px; left: 0; bottom: 0; }
+.bottom-left::after  { width: 80px; height: 1px; left: 0; bottom: 0; }
+
+/* ─── Form Panel ─── */
+.form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow-y: auto;
+  background: #0a0a0f;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Header ─── */
+.form-header { margin-bottom: 2.5rem; }
+
+.logo-mark {
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+  font-weight: 300;
+}
+
+/* ─── Fields ─── */
+.field-group {
+  position: relative;
+  margin-bottom: 1.75rem;
+}
+
+.field-group input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  padding: 0.875rem 2.5rem 0.875rem 0;
+  font-size: 0.9rem;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.field-group input:focus {
+  border-bottom-color: rgba(255,255,255,0.5);
+}
+
+.field-group label {
+  position: absolute;
+  left: 0;
+  top: 0.875rem;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 300;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  transform-origin: left center;
+}
+
+.field-group input:focus ~ label,
+.field-group input:not(:placeholder-shown) ~ label,
+.field-group.has-value label {
+  transform: translateY(-1.25rem) scale(0.78);
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.08em;
+}
+
+.field-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: linear-gradient(90deg, #a78bfa, #38bdf8);
+  transition: width 0.3s ease;
+}
+
+.field-group input:focus ~ .field-line {
+  width: 100%;
+}
+
+.field-group.has-error input {
+  border-bottom-color: rgba(248, 113, 113, 0.5);
+}
+
+.error-msg {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  color: #f87171;
+  letter-spacing: 0.02em;
+}
+
+/* Password toggle */
+.toggle-pw {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.3);
+  transition: color 0.2s;
+  display: flex;
+  margin-top: -8px;
+}
+
+.toggle-pw:hover { color: rgba(255,255,255,0.7); }
+
+/* ─── Options row ─── */
+.options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.checkbox-label input[type="checkbox"] { display: none; }
+
+.checkmark {
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.checkbox-label input:checked + .checkmark {
+  background: #a78bfa;
+  border-color: #a78bfa;
+}
+
+.checkbox-label input:checked + .checkmark::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: white;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.forgot-link {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.2s;
+  letter-spacing: 0.02em;
+}
+.forgot-link:hover { color: rgba(255,255,255,0.8); }
+
+/* ─── Alert ─── */
+.alert-error {
+  background: rgba(248,113,113,0.08);
+  border-left: 2px solid #f87171;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: #fca5a5;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Primary button ─── */
+.btn-primary {
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  background: #fff;
+  color: #0a0a0f;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  margin-bottom: 2rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: rgba(255,255,255,0.88);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid rgba(0,0,0,0.2);
+  border-top-color: #0a0a0f;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Divider ─── */
+.divider {
+  position: relative;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+.divider span {
+  position: relative;
+  background: #0a0a0f;
+  padding: 0 0.75rem;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── Social buttons ─── */
+.social-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.btn-social {
+  padding: 0.7rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-social:hover {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.9);
+  border-color: rgba(255,255,255,0.18);
+}
+
+/* ─── Switch link ─── */
+.switch-link {
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.3);
+  font-weight: 300;
+}
+
+.switch-link a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-weight: 400;
+  margin-left: 4px;
+  transition: color 0.2s;
+}
+
+.switch-link a:hover { color: #fff; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .auth-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .art-panel {
+    display: none;
+  }
+}

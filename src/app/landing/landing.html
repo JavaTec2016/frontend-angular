@@ -1,0 +1,42 @@
+<div class="page">
+
+    <nav class="navbar">
+        <a routerLink="/" class="nav-logo">
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+                <rect x="1" y="1" width="14" height="14" stroke="currentColor" stroke-width="1.5" />
+                <rect x="17" y="1" width="14" height="14" fill="currentColor" />
+                <rect x="1" y="17" width="14" height="14" fill="currentColor" />
+                <rect x="17" y="17" width="14" height="14" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+            <span>Navbar</span>
+        </a>
+
+        <div class="nav-actions">
+            <span>Opciones de acceso - </span>
+            <a routerLink="/login" class="btn-ghost">Acceder</a>
+            <a routerLink="/signup" class="btn-solid">Registro</a>
+        </div>
+    </nav>
+
+    <section class="features" id="features">
+        <div class="features-inner">
+            <header class="section-header">
+                <p class="section-eyebrow">Estilos vibecodeados</p>
+                <h2>se ven bonitos</h2>
+                <hr>
+                <br>
+                <p class="section-eyebrow">Caracteristicas</p>
+            </header>
+
+            <ul class="feature-grid">
+                @for (f of features; track f.title) {
+                <li class="feature-card">
+                    <span class="feature-symbol">{{ f.symbol }}</span>
+                    <h3>{{ f.title }}</h3>
+                    <p>{{ f.description }}</p>
+                </li>
+                }
+            </ul>
+        </div>
+    </section>
+</div>
